@@ -1,0 +1,58 @@
+<script>
+let step = 0;
+
+const title = document.getElementById("title");
+const text = document.getElementById("text");
+const buttons = document.getElementById("buttons");
+
+function next(){
+  if(step === 0){
+    title.innerText = "You mean a lot to me, Jana 💕";
+    text.innerText = "More than you can imagine...";
+    step++;
+  }
+  else if(step === 1){
+    title.innerText = "You make me smile";
+    text.innerText = "Every single day 😊";
+    step++;
+  }
+  else if(step === 2){
+    title.innerText = "So I wanted to ask...";
+    text.innerText = "Something special 💖";
+    step++;
+  }
+  else{
+    title.innerText = "Will you be my Valentine, Jana? ❤️";
+    text.innerText = "";
+    buttons.innerHTML = `
+      <button onclick="yesClick()">Yes ❤️</button>
+      <button onclick="noClick()">No 💔</button>
+    `;
+  }
+}
+
+function yesClick(){
+  title.innerText = "YAY! 😍";
+  text.innerText = "I Love You Jana ❤️❤️❤️";
+  buttons.innerHTML = "";
+  startHearts();
+}
+
+function noClick(){
+  title.innerText = "😴";
+  text.innerText = "Ed5oli Namy 😅";
+  buttons.innerHTML = "";
+}
+
+function startHearts(){
+  setInterval(()=>{
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (20 + Math.random()*20) + "px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+  },300);
+}
+</script>
