@@ -1,58 +1,123 @@
-<script>
-let step = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
 
-const title = document.getElementById("title");
-const text = document.getElementById("text");
-const buttons = document.getElementById("buttons");
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #ffe6f0;
+      margin: 0;
+      padding: 50px;
+      overflow: hidden;
+    }
 
-function next(){
-  if(step === 0){
-    title.innerText = "You mean a lot to me, Jana 💕";
-    text.innerText = "More than you can imagine...";
-    step++;
-  }
-  else if(step === 1){
-    title.innerText = "You make me smile";
-    text.innerText = "Every single day 😊";
-    step++;
-  }
-  else if(step === 2){
-    title.innerText = "So I wanted to ask...";
-    text.innerText = "Something special 💖";
-    step++;
-  }
-  else{
-    title.innerText = "Will you be my Valentine, Jana? ❤️";
-    text.innerText = "";
-    buttons.innerHTML = `
-      <button onclick="yesClick()">Yes ❤️</button>
-      <button onclick="noClick()">No 💔</button>
-    `;
-  }
-}
+    h1 {
+      font-size: 2.5em;
+      color: #d63384;
+    }
 
-function yesClick(){
-  title.innerText = "YAY! 😍";
-  text.innerText = "I Love You Jana ❤️❤️❤️";
-  buttons.innerHTML = "";
-  startHearts();
-}
+    p {
+      font-size: 1.4em;
+      color: #444;
+    }
 
-function noClick(){
-  title.innerText = "😴";
-  text.innerText = "Ed5oli Namy 😅";
-  buttons.innerHTML = "";
-}
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d6d;
+      color: white;
+    }
 
-function startHearts(){
-  setInterval(()=>{
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.fontSize = (20 + Math.random()*20) + "px";
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),5000);
-  },300);
-}
-</script>
+    .heart {
+      position: fixed;
+      top: -10px;
+      animation: fall 5s linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 id="title">Hi Jana 💕</h1>
+  <p id="text">I have something to tell you...</p>
+
+  <div id="buttons">
+    <button onclick="next()">Next 💌</button>
+  </div>
+
+  <script>
+    let step = 0;
+
+    const title = document.getElementById("title");
+    const text = document.getElementById("text");
+    const buttons = document.getElementById("buttons");
+
+    function next(){
+      if(step === 0){
+        title.innerText = "You mean a lot to me, Jana 💕";
+        text.innerText = "More than you can imagine...";
+        step++;
+      }
+      else if(step === 1){
+        title.innerText = "You make me smile";
+        text.innerText = "Every single day 😊";
+        step++;
+      }
+      else if(step === 2){
+        title.innerText = "So I wanted to ask...";
+        text.innerText = "Something special 💖";
+        step++;
+      }
+      else{
+        title.innerText = "Will you be my Valentine, Jana? ❤️";
+        text.innerText = "";
+        buttons.innerHTML = `
+          <button onclick="yesClick()">Yes ❤️</button>
+          <button onclick="noClick()">No 💔</button>
+        `;
+      }
+    }
+
+    function yesClick(){
+      title.innerText = "YAY! 😍";
+      text.innerText = "I Love You Jana ❤️❤️❤️";
+      buttons.innerHTML = "";
+      startHearts();
+    }
+
+    function noClick(){
+      title.innerText = "😴";
+      text.innerText = "Ed5oli Namy 😅";
+      buttons.innerHTML = "";
+    }
+
+    function startHearts(){
+      setInterval(()=>{
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.fontSize = (20 + Math.random()*20) + "px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+      },300);
+    }
+  </script>
+
+</body>
+</html>
+
